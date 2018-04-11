@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    tools:context="com.xter.slimcalendar.presentation.component.activity.MainActivity">
+
+    <com.xter.slimcalendar.presentation.widget.SlimWeekContentView
+        android:id="@+id/slim_week_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/space_18"
+        app:content_focused_text_color="@color/white"
+        app:content_special_text_color="@color/limegreen"
+        app:content_text_color="@color/black"
+        app:content_text_size="@dimen/text_20"/>
+
+
+    <com.xter.slimcalendar.presentation.widget.SlimWeekHeaderView
+        android:id="@+id/slim_week_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/slim_week_content"
+        android:layout_marginBottom="@dimen/space_8"
+        app:header_text_color="@color/black"
+        app:header_text_size="@dimen/text_16"
+        app:header_weekend_text_color="@color/limegreen"
+    />
+
+    <com.xter.slimcalendar.presentation.widget.SlimWeekBanner
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/slim_week_header"
+        android:layout_marginBottom="@dimen/space_8"
+    >
+        <ImageView
+            android:id="@+id/iv_bing_wallpaper"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"/>
+
+        <TextView
+            android:id="@+id/tv_month"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/space_20"
+            android:layout_marginStart="@dimen/space_20"
+            android:textSize="@dimen/text_40"
+        />
+        <TextView
+            android:id="@+id/tv_year"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white_transparent_1"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/space_20"
+            android:layout_marginStart="@dimen/space_10"
+            android:layout_toEndOf="@id/tv_month"
+            android:textSize="@dimen/text_20"
+        />
+    </com.xter.slimcalendar.presentation.widget.SlimWeekBanner>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:minHeight="?attr/actionBarSize"
+        app:contentInsetLeft="0dp"
+        app:contentInsetStart="0dp"
+        app:popupTheme="@style/ToolbarPopupTheme"
+        app:title=" "
+    >
+        <ImageButton
+            android:layout_width="@dimen/space_40"
+            android:layout_height="@dimen/space_40"
+            android:layout_gravity="end"
+            android:background="@drawable/ic_action_setting"
+            android:layout_marginEnd="@dimen/space_10"
+            android:contentDescription="@string/app_name"/>
+    </android.support.v7.widget.Toolbar>
+</RelativeLayout>

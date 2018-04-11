@@ -1,0 +1,139 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    buildToolsVersion rootProject.buildToolsVersion
+
+    signingConfigs {
+        release {
+            keyAlias 'xter'
+            keyPassword 'hhll3131'
+            storeFile file('../xter.jks')
+            storePassword 'hhhhllll'
+        }
+    }
+    defaultConfig {
+        applicationId "com.xter.slimcalendar"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "0.1"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            //开启混合
+            minifyEnabled true
+//            //开启简单优化
+//            zipAlignEnabled true
+//            // 移除无用的resource文件
+//            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+
+            applicationVariants.all { variant ->
+                variant.outputs.all { output ->
+                    if (variant.buildType.name.equals('release')) {
+                        outputFileName = "SlimCalendar_V${defaultConfig.versionName}.apk"
+                    } else if (variant.buildType.name.equals('debug')) {
+                        outputFileName = "SlimCalendar_V${defaultConfig.versionName}_debug.apk"
+                    }
+                }
+            }
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
+        }
+    }
+
+    packagingOptions {
+        exclude 'META-INF/rxjava.properties'
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile rootProject.testJunit
+    androidTestCompile rootProject.testRunner, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestCompile rootProject.testRules, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    }
+    androidTestCompile rootProject.espressocontrib, {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'support-v7'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
+    androidTestCompile rootProject.espressointents, {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'support-v7'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
+    androidTestCompile rootProject.espressocore, {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'support-v7'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+        exclude group: 'com.google.code.fingbugs'
+
+    }
+    compile rootProject.espressoidlingresource
+    testCompile rootProject.robolectric
+    debugCompile rootProject.leakcanaryDebug
+    releaseCompile rootProject.leakcanaryRelease
+    testCompile rootProject.mockitoall
+    testCompile rootProject.hamcrest
+    androidTestCompile rootProject.mockitocore
+    androidTestCompile rootProject.dexmaker
+    androidTestCompile rootProject.dexmakermockito
+
+    compile rootProject.appcompat
+    compile rootProject.constraint
+    compile rootProject.supportV4
+    compile rootProject.design
+    compile rootProject.recyclerview
+
+    compile project(':support')
+
+    compile rootProject.butterknife
+    annotationProcessor rootProject.butterknifeprocessor
+    compile rootProject.glide
+    annotationProcessor rootProject.glideprocessor
+//    compile rootProject.picasso
+    compile rootProject.glidepalette
+
+    compile rootProject.rxjava2
+    compile rootProject.rxandroid
+    compile rootProject.retrofit2
+    compile rootProject.retrofit2convertergson
+    compile rootProject.retrofit2adapter
+    compile rootProject.okhttp3url
+    compile rootProject.rxlifecycle2android
+    compile rootProject.rxlifecycle2components
+    compile rootProject.rxpermission
+    compile rootProject.fab
+    //    compile rootProject.muldex
+    //    compile rootProject.statusBar, {
+    //        exclude group: 'com.android.support'
+    //    }
+    compile rootProject.umeng
+    //    compile rootProject.sweetalert
+    //    compile rootProject.immersionbar
+    compile rootProject.statusbarutil
+    //    compile rootProject.fragmentation
+    //    compile rootProject.materialsearchview
+    compile rootProject.pickerview
+//    compile rootProject.lombok
+}

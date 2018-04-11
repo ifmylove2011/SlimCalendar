@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="fl_content" type="id"/>
+    <item name="srl_list" type="id"/>
+    <item name="btn_refresh" type="id"/>
+    <item name="btn_retry" type="id"/>
+    <item name="ll_no_data" type="id"/>
+    <item name="ll_loading" type="id"/>
+    <item name="foot_tip" type="id"/>
+    <item name="toolbar" type="id"/>
+    <item name="appbar" type="id"/>
+</resources>
